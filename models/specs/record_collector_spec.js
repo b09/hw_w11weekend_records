@@ -7,18 +7,18 @@ describe('Collector', function(){
 
   beforeEach(function (){
     collector = new Collector();
-    record1 = new Record(){
+    record1 = new Record({
       title: 'Their Greatest Hits 1971 - 1975',
       artist: 'Eagles',
       genre: 'rock',
       price: 1000
-    };
-    record2 = new Record(){
+    });
+    record2 = new Record({
       title: 'Sgt. Peppers',
       artist: 'The Beatles',
       genre: 'rock',
       price: 1200
-    };
+    });
   });
 
 
@@ -60,17 +60,24 @@ describe('Collector', function(){
     });
 
     it('has enough funds', function () {
-      const actual = collector.hasEnoughFunds(10);
-      assert.strictEqual(actual, false);
+      // const actual = collector.hasEnoughFunds(10);
+      // assert.strictEqual(actual, false);
       collector.addFunds(2000);
+      const actual = collector.hasEnoughFunds(10);
       assert.strictEqual(actual, true);
     });
 
-    it('')
+    it('should be able to buy a record if it has enough funds', function () {
+      collector.addFunds(2000);
+      collector.buy(record1);
+      assert.strictEqual(collector.records.length, 1)
+    });
 
-    it('should be able to buy a record if it has enough funds', function () {});
-
-    it('should be able to sell a record if it has the record', function () {});
+    xit('should be able to sell a record if it has the record', function () {
+      collector.addRecord(record1);
+      collector.addRecord(record2);
+      collecter.
+    });
 
 
 
